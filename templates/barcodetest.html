@@ -1,0 +1,12 @@
+<h1>Barcode Regexp Expression Test</h1>
+<form method="POST" action="">{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Test !"/>
+</form>
+
+{{ barcodes|length}}
+<ul>
+{% for barcode in barcodes %}
+	<li>{{ barcode.bformat }}. {{ barcode.regexpstring }}</li>
+{% endfor %}
+</ul>
