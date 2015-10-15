@@ -8,3 +8,17 @@ class Barcode(models.Model):
 
 	def __str__(self):
 		return self.bformat
+
+class Definecaption(models.Model):
+	caption = models.CharField(max_length=100, blank=False, null=False)
+	def __str__(self):
+		return self.caption
+
+class Encoder(models.Model):
+	bformat = models.ForeignKey(Barcode)
+	caption = models.ForeignKey(Definecaption)	
+	start_position = models.IntegerField()
+	char_length = models.IntegerField()
+
+	def __str__(self):
+		return str(self.start_position)

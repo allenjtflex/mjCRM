@@ -1,12 +1,29 @@
+<head>
+{% load bootstrap3 %}
+</head>
+<body>
 <h1>Barcode Regexp Expression Test</h1>
-<form method="POST" action="">{% csrf_token %}
-	{{ form }}
-	<input type="submit" value="Test !"/>
-</form>
 
-{{ barcodes|length}}
+<form method="POST" action="">
+	{% csrf_token %}
+	{% bootstrap_form form layout='inline' %}
+	{% buttons %}
+	    <button type="submit" class="btn btn-primary">
+	      {% bootstrap_icon "star" %} Submit
+	    </button>
+	{% endbuttons %}
+</form>
+Input Length:{{barcodelength}}<p>
+Length Matchs Count: {{ barcodes|length}}
 <ul>
 {% for barcode in barcodes %}
 	<li>{{ barcode.bformat }}. {{ barcode.regexpstring }}</li>
 {% endfor %}
 </ul>
+<p><p>
+Regexp Matchs Format:{{matchsformats|length}}<p>
+<ul>
+<li>{{matchsformats.bformat}} .
+{{matchsformats.regexpstring}}</li>
+</ul>
+</body>
