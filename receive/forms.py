@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 from .models import Rejection
-from base.models import Customer, CatCode
+from base.models import Customer, Catcode
 
 
 class DeliverForm(forms.Form):
@@ -19,9 +19,12 @@ class DeliverForm(forms.Form):
 
 
 class RejectionForm(forms.ModelForm):
+	uom = forms.ModelChoiceField(queryset= Catcode.objects.filter(scode='SYS1', tcode='UOM').exclude(icode=''))
 	class Meta:
 		model = Rejection
-		exclude = ['create_at']
+		#fields = ['deliver_at','customer','deliver','deliver_num','cctno','quantity','wmemo','smemo']
+		exclude = ['create_at','update_at']
+		
 
 
 
