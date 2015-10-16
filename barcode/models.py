@@ -6,13 +6,26 @@ class Barcode(models.Model):
 	barcodelen = models.IntegerField()
 	regexpstring = models.CharField(max_length=254, blank=False, null=False)
 
+	class Meta:
+		ordering = ['bformat']
+
+
 	def __str__(self):
 		return self.bformat
 
+
+
 class Definecaption(models.Model):
 	caption = models.CharField(max_length=100, blank=False, null=False)
+
+	class Meta:
+		ordering = ['id']
+
+
 	def __str__(self):
 		return self.caption
+
+
 
 class Encoder(models.Model):
 	bformat = models.ForeignKey(Barcode)
@@ -20,5 +33,10 @@ class Encoder(models.Model):
 	start_position = models.IntegerField()
 	char_length = models.IntegerField()
 
+	class Meta:
+		ordering = ['bformat', 'start_position']
+		
+
 	def __str__(self):
 		return str(self.start_position)
+

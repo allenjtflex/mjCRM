@@ -14,16 +14,15 @@
 	{% endbuttons %}
 </form>
 Input Length:{{barcodelength}}<p>
-Length Matchs Count: {{ barcodes|length}}
+Length Matches Count: {{ barcodes|length}}<p>
 <ul>
 {% for barcode in barcodes %}
 	<li>{{ barcode.bformat }}. {{ barcode.regexpstring }}</li>
 {% endfor %}
 </ul>
 <p><p>
-Regexp Matchs Format:{{matchsformats|length}}<p>
+Regexp Matches Format:<p>
 <ul>
-<li>{{matchsformats.bformat}} .
-{{matchsformats.regexpstring}}</li>
+<li>{{matchsformats.bformat}} . {{matchsformats.regexpstring}}</li>
 </ul>
 </body>
