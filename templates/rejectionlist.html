@@ -1,0 +1,40 @@
+<h2>{{title}}</h2><p>
+
+<a href="/">MyHome</a><p>
+<a href="/rejectionform">New Rejection</a><p>
+
+Data Count: {{rejections|length}}
+<table border=1 cellspacing="0">
+	<tr>
+		<th align:'center' width:'100'>No.</th>
+		<th align:'center' width:'180'>Deliver At</th>
+		<th align=center width="200">CCT No.</th>
+		<th align=center width="100">Deliver</th>
+		<th align='center' width="100">Deliver No.</th>
+		<th align='center' width="100">Quantity</th>
+		<th width="100">Uom</th>
+		<th width="200">Cutomer</th>
+		<th width="200">Confoirm at</th>
+		<th width="200">Sales</th>
+		<th width="360">Warehouse Memo</th>
+	</tr>
+	{% for r in rejections %}
+	<tr>	
+		<td>{{ forloop.counter }}</td>
+		<td align=center>{{r.deliver_at}}</td>
+		<td>{{r.cctno}}</td>
+		<td align=center>{{r.deliver}}</td>
+		<td>{{r.deliver_num}}</td>
+		<td align=right>{{r.quantity}}</td>
+		<td align=center>{{r.uom}}</td>
+		<td>{{r.customer}}</td>
+		<td>{{r.customer_set.user_set.fullname }}</td>
+		<td>{{r.update_at}}</td>
+		<td>{{r.wmemo}}</td>	
+	</tr>	
+	{% empty %}
+		No Data !
+	{% endfor %}
+</table>
+
+

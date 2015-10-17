@@ -19,11 +19,12 @@ class DeliverForm(forms.Form):
 
 
 class RejectionForm(forms.ModelForm):
-	uom = forms.ModelChoiceField(queryset= Catcode.objects.filter(scode='SYS1', tcode='UOM').exclude(icode=''))
+	uom = forms.ModelChoiceField(queryset= Catcode.objects.filter(scode='SYS1', tcode='UOM').exclude(icode=''), initial =0)
+
 	class Meta:
 		model = Rejection
 		#fields = ['deliver_at','customer','deliver','deliver_num','cctno','quantity','wmemo','smemo']
-		exclude = ['create_at','update_at']
+		exclude = ['create_at','update_at', 'smemo',]
 		
 
 
